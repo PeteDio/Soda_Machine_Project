@@ -26,6 +26,20 @@ class TestGetWalletCoin(unittest.TestCase):
         """Pass in 'Nickel', method should return a Nickel instance"""
         returned_coin = self.customer.get_wallet_coin('Nickel')
         self.assertEqual(returned_coin.value, .05)
+    
+    def test_can_return_none(self):
+        """Pass in random string, method should return none"""
+        returned_coin = self.customer.get_wallet_coin('asdf')
+        self.assertEqual(returned_coin, None)
+
+if __name__ == '__main__':
+    unittest.main()
+
+
+class TestAddCoinsToWallet(unittest.TestCase):
+    """Tests for Customer's add_coins_to_wallet method"""
+    def test_add_coins_to_wallet():
+        pass
 
 if __name__ == '__main__':
     unittest.main()
