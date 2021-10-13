@@ -1,5 +1,8 @@
 import unittest
 from customer import Customer
+from wallet import Wallet
+from cans import Cola
+from backpack import Backpack
 
 class TestGetWalletCoin(unittest.TestCase):
     """Tests for Customer's get_wallet_coin method"""
@@ -40,6 +43,8 @@ class TestAddCoinsToWallet(unittest.TestCase):
 
     def test_add_coins_to_wallet_return_more(self):
         """Pass in a list of coins, should return the old length plus new coins"""
+        self.wallet = Wallet()
+        self.wallet.fill_wallet
         test_list_3 = ["Dime", "Nickel" , "Quarter"]
         before_coin_list = len(self.my_wallet.money)
         after_coin_list = len(self.add_coins_to_wallet(test_list_3))
@@ -51,6 +56,22 @@ class TestAddCoinsToWallet(unittest.TestCase):
         before_coin_list = len(self.my_wallet.money)
         after_coin_list = len(self.add_coins_to_wallet(test_list_3))
         self.assertEqual(before_coin_list, after_coin_list)    
+
+
+
+class TestAddCanToBackPack(unittest.TestCase):
+
+    def setUP(self):
+        self.customer = Customer()
+        
+    
+    def test_add_can_to_backpack(self):
+        """Pass in a can, should return the old length plus one"""
+        self.backpack = Backpack()
+        cola = Cola()
+        before = len(self.backpack.purchased_cans)
+        after = self.backpack.purchased_cans.append(cola)
+        self.assertEqual(before+1, after)   
         
 
 if __name__ == '__main__':
