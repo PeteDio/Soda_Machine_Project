@@ -22,7 +22,7 @@ class TestGetWalletCoin(unittest.TestCase):
         returned_coin = self.customer.get_wallet_coin('Dime')
         self.assertEqual(returned_coin.value, .1)
 
-    def test_can_return_nickle(self):
+    def test_can_return_nickel(self):
         """Pass in 'Nickel', method should return a Nickel instance"""
         returned_coin = self.customer.get_wallet_coin('Nickel')
         self.assertEqual(returned_coin.value, .05)
@@ -38,8 +38,24 @@ if __name__ == '__main__':
 
 class TestAddCoinsToWallet(unittest.TestCase):
     """Tests for Customer's add_coins_to_wallet method"""
-    def test_add_coins_to_wallet():
-        pass
+
+    def setUp(self):
+        self.customer = Customer()
+
+    def test_add_coins_to_wallet_return_more(self):
+        """Pass in a list of coins, should return the old length plus new coins"""
+        test_list_3 = ["Dime", "Nickel" , "Quarter"]
+        before_coin_list = len(self.my_wallet.money)
+        after_coin_list = len(self.add_coins_to_wallet(test_list_3))
+        self.assertEqual(before_coin_list+3, after_coin_list)
+
+    def test_add_coins_to_wallet_return_same(self):
+        """Pass in a list of coins, should return the old length plus new coins"""
+        test_list_3 = []
+        before_coin_list = len(self.my_wallet.money)
+        after_coin_list = len(self.add_coins_to_wallet(test_list_3))
+        self.assertEqual(before_coin_list, after_coin_list)    
+        
 
 if __name__ == '__main__':
     unittest.main()
