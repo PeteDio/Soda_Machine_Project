@@ -32,10 +32,6 @@ class TestGetWalletCoin(unittest.TestCase):
         returned_coin = self.customer.get_wallet_coin('asdf')
         self.assertEqual(returned_coin, None)
 
-if __name__ == '__main__':
-    unittest.main()
-
-
 class TestAddCoinsToWallet(unittest.TestCase):
     """Tests for Customer's add_coins_to_wallet method"""
 

@@ -1,5 +1,6 @@
 import unittest
 from wallet import Wallet
+
 class TestWallet(unittest.TestCase):
     def setUp(self):
         self.my_wallet = Wallet()
