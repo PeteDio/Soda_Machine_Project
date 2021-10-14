@@ -46,7 +46,8 @@ class TestAddCoinsToWallet(unittest.TestCase):
         self.wallet = Wallet()
         test_list_3 = ["Dime", "Nickel" , "Quarter"]
         before_coin_list = len(self.wallet.money)
-        after_coin_list = len(self.customer.add_coins_to_wallet(test_list_3))
+        self.customer.add_coins_to_wallet(test_list_3)
+        after_coin_list = len(self.wallet.money)
         self.assertEqual(before_coin_list+3, after_coin_list)
 
     def test_add_coins_to_wallet_return_same(self):
