@@ -44,17 +44,17 @@ class TestAddCoinsToWallet(unittest.TestCase):
     def test_add_coins_to_wallet_return_more(self):
         """Pass in a list of coins, should return the old length plus new coins"""
         self.wallet = Wallet()
-        self.wallet.fill_wallet
         test_list_3 = ["Dime", "Nickel" , "Quarter"]
-        before_coin_list = len(self.my_wallet.money)
-        after_coin_list = len(self.add_coins_to_wallet(test_list_3))
+        before_coin_list = len(self.wallet.money)
+        after_coin_list = len(self.customer.add_coins_to_wallet(test_list_3))
         self.assertEqual(before_coin_list+3, after_coin_list)
 
     def test_add_coins_to_wallet_return_same(self):
         """Pass in a list of coins, should return the old length plus new coins"""
+        self.wallet = Wallet()
         test_list_3 = []
-        before_coin_list = len(self.my_wallet.money)
-        after_coin_list = len(self.add_coins_to_wallet(test_list_3))
+        before_coin_list = len(self.wallet.money)
+        after_coin_list = len(self.customer.add_coins_to_wallet(test_list_3))
         self.assertEqual(before_coin_list, after_coin_list)    
 
 
