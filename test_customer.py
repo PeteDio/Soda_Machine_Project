@@ -54,7 +54,7 @@ class TestAddCoinsToWallet(unittest.TestCase):
         """Pass in a list of coins, should return the old length plus new coins"""
         test_list_3 = []
         before_coin_list = len(self.wallet.money)
-        self.customer.add_coins_to_wallet(test_list_3)
+        self.customer.add_coins_to_wallet()
         after_coin_list = len(self.wallet.money)
         self.assertEqual(before_coin_list, after_coin_list)    
 
