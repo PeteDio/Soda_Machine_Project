@@ -160,7 +160,7 @@ class TestReturnInventory(unittest.TestCase):
         """storing the length of the inventory adding a can then testing the stored length plus one againist the new length"""
         before_inventory = len(self.my_soda_machine.inventory)
         cola = Cola()
-        len(self.my_soda_machine.return_inventory(cola))
+        self.my_soda_machine.return_inventory(cola)
         after_inventory = len(self.my_soda_machine.inventory)
 
         self.assertEqual(before_inventory + 1, after_inventory)  
@@ -170,7 +170,7 @@ class TestDepositCoinsIntoRegister(unittest.TestCase):
         self.soda_machine = SodaMachine()
         
     def test_deposit_coins_into_register(self):
-        """storing the length of the coins adding coin list then testing the stored length plus xxx againist the new length"""
+        """storing the length of the coins adding coin list then testing the stored length plus four againist the new length"""
         quarter = Quarter()
         nickel = Nickel()
         dime = Dime()
@@ -181,10 +181,11 @@ class TestDepositCoinsIntoRegister(unittest.TestCase):
         self.money_list.append(nickel)
         self.money_list.append(dime)
         self.money_list.append(penny)
-        before_coin = 0
+        
+        before_coin = len(self.soda_machine.register)
         self.soda_machine.deposit_coins_into_register(self.money_list)
-        after_coin = 0
-        self.assertEqual()
+        after_coin = len(self.soda_machine.register)
+        self.assertEqual(before_coin + 4, after_coin)
 
 if __name__ == '__main__':
     unittest.main()        
