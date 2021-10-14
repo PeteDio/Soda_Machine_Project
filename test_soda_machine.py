@@ -16,3 +16,9 @@ class TestSodaMachine(unittest.TestCase):
     def test_fill_inventory(self):    
         """test that its inventory list has a len of 30"""
         self.assertEqual(len(self.my_soda_machine.inventory), 30)    
+
+
+
+
+if __name__ == '__main__':
+    unittest.main()        
