@@ -3,6 +3,7 @@ from customer import Customer
 from wallet import Wallet
 from cans import Cola
 from backpack import Backpack
+from coins import Dime
 
 class TestGetWalletCoin(unittest.TestCase):
     """Tests for Customer's get_wallet_coin method"""
@@ -40,19 +41,17 @@ class TestAddCoinsToWallet(unittest.TestCase):
 
     def setUp(self):
         self.customer = Customer()
+        self.wallet = Wallet()
 
     def test_add_coins_to_wallet_return_more(self):
         """Pass in a list of coins, should return the old length plus new coins"""
-        self.wallet = Wallet()
-        test_list_3 = ["Dime", "Nickel" , "Quarter"]
         before_coin_list = len(self.wallet.money)
-        self.customer.add_coins_to_wallet(test_list_3)
+        self.customer.add_coins_to_wallet(Dime(), Dime() , Dime())
         after_coin_list = len(self.wallet.money)
         self.assertEqual(before_coin_list+3, after_coin_list)
 
     def test_add_coins_to_wallet_return_same(self):
         """Pass in a list of coins, should return the old length plus new coins"""
-        self.wallet = Wallet()
         test_list_3 = []
         before_coin_list = len(self.wallet.money)
         self.customer.add_coins_to_wallet(test_list_3)
