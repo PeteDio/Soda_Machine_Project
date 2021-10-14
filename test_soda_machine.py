@@ -152,5 +152,20 @@ class TestGetInventorySoda(unittest.TestCase):
         self.soda_one = self.my_soda_machine.get_inventory_soda('Mountain Deu')
         self.assertIsNone(self.soda_one)
 
+class TestReturnInventory(unittest.TestCase):
+    def setUp(self):
+        self.my_soda_machine = SodaMachine()
+
+    def test_return_inventory(self):
+        """storing the length of the inventory adding a can then testing the stored length plus one againist the new length"""
+        before_inventory = len(self.my_soda_machine.inventory)
+        cola = Cola()
+        len(self.my_soda_machine.return_inventory(cola))
+        after_inventory = len(self.my_soda_machine.inventory)
+
+        self.assertEqual(before_inventory + 1, after_inventory)  
+
+
+
 if __name__ == '__main__':
     unittest.main()        
