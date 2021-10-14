@@ -84,7 +84,25 @@ class TestRegisterHasCoin(unittest.TestCase):
         returned_coin = self.my_soda_machine.get_coin_from_register("Asdf")
         self.assertFalse(returned_coin)
 
+class TestDetermineChangeValue(unittest.TestCase):
+    def setUp(self):
+        self.my_soda_machine = SodaMachine()
 
+    def test_determine_change_value_a(self):
+        """test if change returned total_price higher """
+        changed_value = self.my_soda_machine.determine_change_value(1.00, .50)
+        self.assertEqual(changed_value, 0.5)
+
+    def test_determine_change_value_b(self):
+        """test if change returned soda_price higher """
+        changed_value = self.my_soda_machine.determine_change_value(1.00, 1.50)
+        self.assertEqual(changed_value, -0.5)
+
+    def test_determine_change_value_c(self):
+        """test if change returned two equal values from register """
+        changed_value = self.my_soda_machine.determine_change_value(1.00, 1.00)
+        self.assertEqual(changed_value, 0)
+        
 
 
 if __name__ == '__main__':
