@@ -41,38 +41,38 @@ class TestAddCoinsToWallet(unittest.TestCase):
 
     def setUp(self):
         self.customer = Customer()
-        self.wallet = Wallet()
 
     def test_add_coins_to_wallet_return_more(self):
         """Pass in a list of coins, should return the old length plus new coins"""
-        before_coin_list = len(self.wallet.money)
-        self.customer.add_coins_to_wallet(Dime(), Dime() , Dime())
-        after_coin_list = len(self.wallet.money)
+        before_coin_list = len(self.customer.wallet.money)
+        three_coins = [Dime(), Dime(), Dime()]
+        self.customer.add_coins_to_wallet(three_coins)
+        after_coin_list = len(self.customer.wallet.money)
         self.assertEqual(before_coin_list+3, after_coin_list)
 
     def test_add_coins_to_wallet_return_same(self):
         """Pass in a list of coins, should return the old length plus new coins"""
-        test_list_3 = []
-        before_coin_list = len(self.wallet.money)
-        self.customer.add_coins_to_wallet()
-        after_coin_list = len(self.wallet.money)
+        before_coin_list = len(self.customer.wallet.money)
+        self.customer.add_coins_to_wallet([])
+        after_coin_list = len(self.customer.wallet.money)
         self.assertEqual(before_coin_list, after_coin_list)    
 
 
 
 class TestAddCanToBackPack(unittest.TestCase):
 
-    def setUP(self):
+    def setUp(self):
         self.customer = Customer()
         
     
     def test_add_can_to_backpack(self):
         """Pass in a can, should return the old length plus one"""
-        self.backpack = Backpack()
-        cola = Cola()
-        before = len(self.backpack.purchased_cans)
-        after = self.backpack.purchased_cans.append(cola)
-        self.assertEqual(before+1, after)   
+        self.my_backpack = Backpack()
+        self.cola = Cola()
+        before = len(self.my_backpack.purchased_cans) 
+        self.my_backpack.purchased_cans.append(self.cola)
+        after = len(self.my_backpack.purchased_cans)
+        self.assertEqual(before + 1, after)   
         
 
 if __name__ == '__main__':
