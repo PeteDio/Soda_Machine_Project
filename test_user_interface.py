@@ -101,7 +101,37 @@ class TestDisplayPaymentValue(unittest.TestCase):
         returned_value = user_interface.display_payment_value(self.wallet)
         self.assertEqual(returned_value, 0)
 
+class TestValidateCoinSelection(unittest.TestCase):
+        
+    def test_validate_coin_selection_a(self):
+        """Pass in each int 1, ensure the appropriate tuple is returned."""
+        returned_value = user_interface.validate_coin_selection(1)
+        self.assertEqual(returned_value, (True, "Quarter"))
 
+    def test_validate_coin_selection_b(self):
+        """Pass in each int 2, ensure the appropriate tuple is returned."""
+        returned_value = user_interface.validate_coin_selection(2)
+        self.assertEqual(returned_value, (True, "Dime"))
+
+    def test_validate_coin_selection_c(self):
+        """Pass in each int 3, ensure the appropriate tuple is returned."""
+        returned_value = user_interface.validate_coin_selection(3)
+        self.assertEqual(returned_value, (True, "Nickel"))
+
+    def test_validate_coin_selection_d(self):
+        """Pass in each int 4, ensure the appropriate tuple is returned."""
+        returned_value = user_interface.validate_coin_selection(4)
+        self.assertEqual(returned_value, (True, "Penny"))
+
+    def test_validate_coin_selection_e(self):
+        """Pass in each int 5, ensure the appropriate tuple is returned."""
+        returned_value = user_interface.validate_coin_selection(5)
+        self.assertEqual(returned_value, (True, "Done"))
+    
+    def test_validate_coin_selection_f(self):
+        """Pass in a different number, ensure (False, None) is returned."""
+        returned_value = user_interface.validate_coin_selection(6)
+        self.assertEqual(returned_value, (False, None))
 
 if __name__ == "__main__":
     unittest.main()        
