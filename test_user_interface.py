@@ -43,5 +43,7 @@ class TestTryParseInt(unittest.TestCase):
         returned_value = user_interface.try_parse_int('hello')
         self.assertEqual(returned_value, 0)
 
+
+
 if __name__ == "__main__":
     unittest.main()        
