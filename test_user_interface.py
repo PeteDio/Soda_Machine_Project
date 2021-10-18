@@ -43,6 +43,64 @@ class TestTryParseInt(unittest.TestCase):
         returned_value = user_interface.try_parse_int('hello')
         self.assertEqual(returned_value, 0)
 
+class TestGetUniqueCanNames(unittest.TestCase):
+
+    def test_get_unique_can_names(self):
+        """Instantiate 6 cans (two of each type) and append them to a list. Pass the list into this function, ensure the returned list only contains 3 names"""
+
+        cola = Cola()
+        cola_one = Cola()
+        orange_soda = OrangeSoda()
+        orange_soda_one = OrangeSoda()
+        root_beer = RootBeer()
+        root_beer_one = RootBeer()
+        
+        soda_list = []
+
+        soda_list.append(cola)
+        soda_list.append(cola_one)
+        soda_list.append(orange_soda)
+        soda_list.append(orange_soda_one)
+        soda_list.append(root_beer)
+        soda_list.append(root_beer_one)
+
+        returned_value = user_interface.get_unique_can_names(soda_list)
+        self.assertEqual(len(returned_value), 3)
+
+    def test_get_unique_can_names_empty(self):
+        """Pass in an empty list. Ensure an empty list is returned."""
+        self.my_soda = []
+
+        returned_value = user_interface.get_unique_can_names(self.my_soda)
+        self.assertEqual(len(returned_value), 0)
+
+
+class TestDisplayPaymentValue(unittest.TestCase):
+
+    def test_display_payment_value(self):
+        """Instantiate each of the 4 coin types and append them to a list. Pass the list into this function, ensure the returned values is .41"""
+        quarter = Quarter()
+        dime = Dime()
+        nickel = Nickel()
+        penny = Penny()
+
+        wallet = []
+
+        wallet.append(quarter)
+        wallet.append(dime)
+        wallet.append(nickel)
+        wallet.append(penny)
+
+        returned_value = user_interface.display_payment_value(wallet)
+        self.assertEqual(returned_value, .41)
+
+    def test_display_payment_value_b(self):
+        """Pass in an empty list. Ensure the returned value is 0."""
+        self.wallet = []
+
+        returned_value = user_interface.display_payment_value(self.wallet)
+        self.assertEqual(returned_value, 0)
+
 
 
 if __name__ == "__main__":
