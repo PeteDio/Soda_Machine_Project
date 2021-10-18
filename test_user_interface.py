@@ -30,6 +30,18 @@ class TestUserInterface(unittest.TestCase):
         returned_value = user_interface.validate_main_menu(5)
         self.assertEqual(returned_value, (False, None)) 
 
+class TestTryParseInt(unittest.TestCase):
+
+    def test_try_parse_int(self):
+        """10 as a string goes in, needs to return int value 10"""
+        returned_value = user_interface.try_parse_int('10')
+        self.assertEqual(returned_value, 10)
+        pass
+
+    def test_try_parse_int_b(self):
+        """'hello' goes in, needs to return 0"""
+        returned_value = user_interface.try_parse_int('hello')
+        self.assertEqual(returned_value, 0)
 
 if __name__ == "__main__":
     unittest.main()        
